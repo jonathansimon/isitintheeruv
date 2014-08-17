@@ -1,0 +1,74 @@
+<!--<div id="home-header">-->
+<!--<h2>Is it in the Eruv?</h2>-->
+<!--</div>-->
+
+<div id="home-wrapper">
+
+  <!--<div id="bg"><img src="<%#= image_path("telephone-pole-3.jpg") %>" width="100%" alt=""></div>-->
+
+  <div id="home-content">
+
+    <div class="home-content-inner">
+
+      <div class="centered">
+
+
+        <h2>Is it in the eruv?</h2>
+
+        <p>Enter an address here to find out if it is in the Berkeley eruv.</p>
+
+        <%= form_tag result_index_path, :method => 'get', :id => "addressForm" do %>
+
+            <%= text_field_tag :address, nil, :placeholder => 'Enter an address ...', :required => true, :class => "search-entry" %>
+
+            <%= submit_tag "Search", :class => "search-button" %>
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="home-footer">
+  <div id="home-footer-wrapper">
+
+    <div class="three-col">
+      <div class="col">
+        <h2>Search Tips</h2>
+
+        <p>Include your complete address including city and state or zip code to make sure google
+          correctly identifies the location.</p>
+      </div>
+
+      <div class="col">
+        <h2>Disclaimer</h2>
+
+        <p>This site is for informational purposes only. We make every effort to keep site information up to
+          date with eruv changes. However, there are potentially changes in the eruv that have not been reflected
+          here as well as other possible discrepencies. Please consult your local halachic authority before
+          making any major decisions including buying or renting a home, or carrying on shabbos.
+        </p>
+      </div>
+
+      <div class="col">
+        <h2>About</h2>
+
+        <p>This site was created by <a href="http://www.jonathansimon.com">Jonathan Simon</a> while he and his wife
+          were looking for a home in Berkeley, California. (You guessed it, that's why the site only supports the
+          Berkeley
+          eruv at the moment). Hopefully others will find it useful as well. In the future, we hope
+          to include other eruvim from other communities as well as walking distances to additional points of interest.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<%= content_for :javascript do %>
+
+<% end %>
