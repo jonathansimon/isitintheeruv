@@ -5,7 +5,7 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+# gem 'pg'
 
 gem 'json'
 
@@ -26,6 +26,7 @@ gem 'rails_12factor'
 gem 'unicorn'
 gem 'awesome_print'
 gem 'geocoder'
+gem 'activerecord-mysql2-adapter'
 
 
 # To use ActiveModel has_secure_password

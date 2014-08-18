@@ -20,6 +20,7 @@
     <orderEntry type="library" scope="PROVIDED" name="actionpack (v3.2.8, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v3.2.8, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v3.2.8, rbenv: 1.9.3-p194) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="activerecord-mysql2-adapter (v0.0.3, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activeresource (v3.2.8, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.2.8, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v3.0.2, rbenv: 1.9.3-p194) [gem]" level="application" />
@@ -41,7 +42,7 @@
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.4.4, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.25, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.8.2, rbenv: 1.9.3-p194) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="pg (v0.17.0, rbenv: 1.9.3-p194) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.3.16, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.3, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.4.5, rbenv: 1.9.3-p194) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-cache (v1.2, rbenv: 1.9.3-p194) [gem]" level="application" />
