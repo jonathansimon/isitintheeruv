@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Is It In The Eruv?</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+  html, body {
+    height: 100%;
+  }
+
+  #wrapper {
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    //width: 910px;
+    height: 100%;
+    padding: 0px;
+  }
+
+  #content {
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    width: 75%;
+    height: 100%;
+    margin-bottom: 30px;
+  }
+
+  #sidebar {
+    float: left;
+    color: 000;
+    margin: 0px;
+    padding: 10px;
+    width: 22%;
+    height: 100%;
+  }
+
+  #sidebar-big-result-yes {
+    color: #00FF00;
+    font-size: 10em;
+  }
+
+  #sidebar-big-result-no {
+    color: #FF0000;
+    font-size: 10em;
+  }
+
+
+  #map-canvas {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+  }
+  </style>
+
+</head>
+<body>
+
+  <div id="wrapper">
+
+      <div id="sidebar">
+        <p>So, is it in the eruv?</p>
+
+        <div id="sidebar-big-result-yes" style="display: none">Yes</div>
+
+        <div id="sidebar-big-result-no" style="display: none">No</div>
+
+        <div id="sidebar-walking-distance" style="display: none">Walking distance</div>
+
+      </div>
+
+      <div id="content">
+        <div id="map-canvas"></div>
+      </div>
+
+  </div>
+
+      <script type="text/javascript">
+
+          function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+          }
+
+          function geocodeAddress() {
+            var geocoder = new google.maps.Geocoder();
+            var address = getParameterByName('address');
+            geocoder.geocode({'address': address}, function(results, status) {
+              if (status === 'OK') {
+                onGeocoderReturned(address, results[0].geometry.location)
+                // resultsMap.setCenter(results[0].geometry.location);
+                // var marker = new google.maps.Marker({
+                //   map: resultsMap,
+                //   position: results[0].geometry.location
+                // });
+              } else {
+                alert('Oh no! Something was wrong with that address: ' + status);
+              }
+            });
+          }
+
+          function initialize() {
+            // var cbi_location = new google.maps.LatLng(37.8660787, -122.2779125);
+            // var image = './synagogue.png';
+            // var cbi_marker = new google.maps.Marker({
+            //     position: cbi_location,
+            //     icon: image,
+            //     map: map,
+            //     title: 'CBI'
+            // });
+            //
+            // var mapOptions = {
+            //     zoom: 14,
+            //     center: cbi_location,
+            //     mapTypeId: google.maps.MapTypeId.ROADMAP
+            // }
+            //
+            // var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+
+            geocodeAddress();
+          }
+
+
+          function onGeocoderReturned(address, location) {
+          //function initialize() {
+              var cbi_location = new google.maps.LatLng(37.8660787, -122.2779125);
+              var address_location = location;
+
+              var mapOptions = {
+                  zoom: 14,
+                  center: address_location,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              }
+
+              var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+              var image = './synagogue.png';
+              var cbi_marker = new google.maps.Marker({
+                  position: cbi_location,
+                  icon: image,
+                  map: map,
+                  title: 'CBI'
+              });
+
+              var address_marker = new google.maps.Marker({
+                  position: address_location,
+                  map: map,
+                  title: address
+              });
+
+
+              var eruvPoints = google.maps.geometry.encoding.decodePath("ax`fFvbhiVlDpc@_l@vH~@|MfDs@pDzi@QmBiD`@PrBar@`IiUnA]gHwDXhB|W_J|Bi@_JuDz@kCiGo@qA{A?qGaBkCgAwBp@}D`BqTtH_Q~DcPnD{WhGmSlER{Qd]`@@sD]CHoOmJMHkJoJMHiKpAqAlHuMvD_HyHaRdFaEhAWtBdAtAHvOqB`PuBpC_AzAM|BGfCYrIc@jJm@nJy@TlFlw@_E]eFrUeA_@eFtUsA~k@{C")
+
+              var eruvPath = new google.maps.Polygon({
+                  path: eruvPoints,
+                  geodesic: true,
+                  strokeColor: '#0000FF',
+                  strokeOpacity: 1.0,
+                  strokeWeight: 2
+              });
+
+              eruvPath.setMap(map);
+
+              if (google.maps.geometry.poly.containsLocation(address_location, eruvPath)) {
+                  //document.getElementById('sidebar-big-result-yes').display = "block"
+                  $("#sidebar-big-result-yes").css( "display", "block" );
+              } else {
+                  //document.getElementById('sidebar-big-result-no').display = "block"
+                  $("#sidebar-big-result-no").css( "display", "block" );
+              }
+
+              //calculateDistances();
+
+
+          }
+
+          // function calculateDistances() {
+          //     var cbi_location = new google.maps.LatLng(37.8660787, -122.2779125);
+          //     var address_location = new google.maps.LatLng(37.8660787, -122.2779125);
+          //     var service = new google.maps.DistanceMatrixService();
+          //     service.getDistanceMatrix(
+          //             {
+          //                 origins: [address_location],
+          //                 destinations: [cbi_location],
+          //                 travelMode: google.maps.TravelMode.WALKING,
+          //                 unitSystem: google.maps.UnitSystem.IMPERIAL
+          //             }, function(response, status) {
+          //                 if (status == google.maps.DirectionsStatus.OK) {
+          //                     //$( "#sidebar-walking-distance" ).css( "display", "block" );
+          //                    //$( "#sidebar-walking-distance").text("Walking distance to CBI is " + response.rows[0].elements[0].distance.text)
+          //
+          //                 }
+          //             }
+          //     );
+          // }
+
+          function loadScript() {
+              var script = document.createElement("script");
+              script.type = "text/javascript";
+              script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyAYL8w2L370cwAxWl1sCFiQxC08ZXA9-4E&callback=initialize&libraries=geometry";
+              document.body.appendChild(script);
+          }
+
+          window.onload = loadScript;
+
+      </script>
+<body>

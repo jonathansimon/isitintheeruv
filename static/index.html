@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Is It In The Eruv?</title>
+
+  <style>
+  html {
+    height: 100%;
+    width: 100%;
+    color: #323435;
+  }
+
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #EEEEEE;
+  }
+
+  a {
+   text-decoration: none;
+   color: #3E63A8;
+  }
+
+  #bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  #home-wrapper {
+    background-image:url('telephone-pole-5.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 500px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  #home-content {
+    width: 700px;
+    height: 500px;
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #home-content h2 {
+    margin: 5px;
+    padding: 0px;
+    font-weight:bold;
+    color: white;
+    font-size: 48px;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+  }
+  #home-content p {
+    margin: 5px;
+    padding: 0px;
+    color: white;
+    font-size: 24px;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+  }
+
+
+  .home-content-inner {
+    margin: 20px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .home-content-inner:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+
+    /* For visualization
+    background: #808080; width: 5px;
+    */
+  }
+
+  .centered {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 15px;
+  }
+
+  #home-footer {
+    width: 100%;
+  }
+
+  #home-footer-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    height: auto;
+  }
+
+  .three-col,  {
+    width: 100%;
+    //background-color: red;
+  }
+
+  .three-col .col {
+    float: left;
+    width: 29%;
+    margin-right: 1%;
+    margin-left: 1%;
+    padding-right: 22px;
+    font-weight: bold;
+  }
+
+  .three-col .col h2 {
+    margin-bottom: 0px;
+    font-size: 24px;
+
+  }
+
+  .three-col .col p {
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  .search-entry {
+    margin-top: 20px;
+    font-size: 28px;
+    border: #a0a0a0 solid 1px;
+    padding: 5px;
+    width: 500px;
+    height: 45px;
+  }
+
+  .search-button {
+    background-color: #271D10;
+    color: white;
+    font-size: 24px;
+    border: #a0a0a0 solid 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 50px;
+  }
+
+  .search-button .hover {
+    background-color: red;
+  }
+  </style>
+
+</head>
+<body>
+  <div id="home-wrapper">
+    <div id="home-content">
+      <div class="home-content-inner">
+        <div class="centered">
+          <h2>Is it in the eruv?</h2>
+          <p>Enter an address here to find out if it is in the Berkeley eruv.</p>
+          <form action="/result.html">
+            <input type="text" name="address" placeholder="Enter an address ..." class="search-entry">
+            <input type="submit" value="Search" class="search-button">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="home-footer">
+    <div id="home-footer-wrapper">
+
+      <div class="three-col">
+        <div class="col">
+          <h2>Search Tips</h2>
+
+          <p>Include your complete address including city and state or zip code to make sure google
+            correctly identifies the location.</p>
+        </div>
+
+        <div class="col">
+          <h2>Disclaimer</h2>
+
+          <p>This site is for informational purposes only. We make every effort to keep site information up to
+            date with eruv changes. However, there are potentially changes in the eruv that have not been reflected
+            here as well as other possible discrepencies. Please consult your local halachic authority before
+            making any major decisions including buying or renting a home, or carrying on shabbos.
+          </p>
+        </div>
+
+        <div class="col">
+          <h2>About</h2>
+
+          <p>This site was created by <a href="http://www.jonathansimon.com">Jonathan Simon</a> while he and his wife
+            were looking for a home in Berkeley, California. (You guessed it, that's why the site only supports the
+            Berkeley
+            eruv at the moment). Hopefully others will find it useful as well. In the future, we hope
+            to include other eruvim from other communities as well as walking distances to additional points of interest.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<body>
