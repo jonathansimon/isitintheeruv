@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,13 +14,13 @@ gem 'json'
 group :assets do
   gem 'execjs'
   gem 'therubyracer', :platforms => :ruby
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails' #,   '~> 3.2.3'
+  gem 'coffee-rails' #'~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier' # , '>= 1.0.3'
 end
 
 gem 'jquery-rails'
@@ -29,5 +29,3 @@ gem 'unicorn'
 gem 'awesome_print'
 gem 'geocoder'
 gem 'activerecord-mysql2-adapter'
-
-
